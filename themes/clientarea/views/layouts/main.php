@@ -33,7 +33,7 @@
 	<script src="<?php echo $assetsPath; ?>js/jqueryCustomForms.js"></script>
 	<script src="<?php echo $assetsPath; ?>js/bootstrap.min.js"></script>
 	<script src="<?php echo $assetsPath; ?>js/autocomplit-combo.js"></script>
-	<script src="<?php echo $assetsPath; ?>js/scripts.js"></script>
+	<script src="<?php echo $assetsPath; ?>js/scripts.js"></script> 
 </head>
 <?php
 	$user = User::model()->findByPk( Yii::app()->user->id );

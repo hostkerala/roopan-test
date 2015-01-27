@@ -1097,3 +1097,49 @@ table.fc-header{
 .custom-combobox .custom-combobox-input, .add-form .form-control.selectArea {
 	max-width: 276px!important;
 }
+
+/**
+* Created By Roopan v v <yiioverflow@gmail.com>
+* Date : 26-01-2015
+* Time :11:00 AM
+* Custom CSS
+*/   
+
+#sendmenu {
+	float: none;
+	display: block;
+	width: 100%;
+	background: url(../images/sidebar-btns-bg.png) repeat-x;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border:none;
+	height: 43px;
+	padding: 0 19px;
+	line-height: 43px;
+	color:#fff;
+	text-shadow: 1px 1px 1px #000;
+	text-align:left;
+}
+
+
+#send-email
+{    
+    background:none;
+    color: #878d95;
+    font-size: 14px;
+    text-decoration: none;
+    border:none;
+}
+
+#send-system
+{    
+    background:none;
+    color: #878d95;
+    font-size: 14px;
+    text-decoration: none;   
+    border:none;
+}
+
+
+

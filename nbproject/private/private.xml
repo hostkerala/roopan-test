@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/roopz/www/6/protected/extensions/yii-pdf/EYiiPdf.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/layouts/_client_menu.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_mail_template.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/bulkView.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/create.php</file>
+            <file>file:/home/roopz/www/6/themes/clientarea/assets/css/style.css</file>
+            <file>file:/home/roopz/www/6/protected/views/site/contact.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_additional_fields_rich.php</file>
+            <file>file:/home/roopz/www/6/protected/config/db-local.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_send_email.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/index.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/dashboard/index.php</file>
+            <file>file:/home/roopz/www/6/protected/migrations/m150125_083346_add_table_email_history.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/ClientareaModule.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_additional_fields_view.php</file>
+            <file>file:/home/roopz/www/6/protected/models/Item.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/controllers/ClientController.php</file>
+            <file>file:/home/roopz/www/6/protected/config/routes.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/dashboard/dashboard.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_form/_form_fields.php</file>
+            <file>file:/home/roopz/www/6/protected/helpers/Html.php</file>
+            <file>file:/home/roopz/www/6/protected/extensions/yii-pdf/README.md</file>
+            <file>file:/home/roopz/www/6/protected/models/SendMailForm.php</file>
+            <file>file:/home/roopz/www/6/themes/clientarea/views/mail/sendMail.php</file>
+            <file>file:/home/roopz/www/6/protected/config/db.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_mail_preview.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_view.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/sendmail.php</file>
+            <file>file:/home/roopz/www/6/index.php</file>
+            <file>file:/home/roopz/www/6/protected/models/EmailHistory.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/controllers/AccountController.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_additional_fields.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_create_grid.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/views/item/_form_fields.php</file>
+            <file>file:/home/roopz/www/6/protected/config/main.php</file>
+            <file>file:/home/roopz/www/6/themes/clientarea/views/layouts/main.php</file>
+            <file>file:/home/roopz/www/6/protected/modules/clientarea/controllers/ItemController.php</file>
+        </group>
+    </open-files>
+</project-private>
