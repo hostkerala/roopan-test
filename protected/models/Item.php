@@ -296,8 +296,9 @@ class Item extends CActiveRecord
     public function search()
     {
         $criteria = new CDbCriteria;
-        //$criteria->with = array('client' => array('select' => false));
-        //$criteria->compare('client.client_user_id', Yii::app()->user->id);
+        //Can be Commented... By Roopan - for Testing Purpose - Test Assignment
+        $criteria->with = array('client' => array('select' => false));
+        $criteria->compare('client.client_user_id', Yii::app()->user->id);
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.item_category_id', $this->item_category_id);
         $criteria->compare('t.item_name', $this->item_name,true);
@@ -455,17 +456,15 @@ class Item extends CActiveRecord
 
        public function findSumSelected($selected_items)
        {
-            if(!empty($selected_items))
+            $command=Yii::app()->db->createCommand();
+            $command->select('SUM(item_amount) AS sum_amount');
+            $command->from('item');
+            $command->where(array('in', 'id', $selected_items));
+            $sum = $command->queryScalar();
+            if($sum)
             {
-                $command=Yii::app()->db->createCommand();
-                $command->select('SUM(item_amount) AS sum_amount');
-                $command->from('item');
-                $command->where(array('in', 'id', $selected_items));
-                return $command->queryScalar();
+                return $sum;
             }
-            else
-            {
-                return 0;
-            }
+            return 0;
        }
 }

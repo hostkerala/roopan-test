@@ -514,7 +514,7 @@ class ItemController extends ClientareaController {
         
         $params = array();
         $params['date'] = date('d M Y');
-        $params['amount'] = Item::model()->findSumSelected($selected__items); //Hard coded for Testing $model->total;
+        $params['amount'] = Item::model()->findSumSelected($selected__items);
         $model->selected_items = $selected_items_string;
         $model->body  = $this->renderPartial('_mail_template',array('amount'=>$params['amount'],'date'=>$params['date']),true);
  
@@ -522,6 +522,7 @@ class ItemController extends ClientareaController {
 		{
 			$model->attributes = $_POST['SendMailForm'];                       
                         $selected__items =  explode( ',', $model->selected_items ); // Used to Keep the track of selected items      
+                        $params['amount'] = Item::model()->findSumSelected($selected__items); 
                         if($model->validate())
 			{                              
                             $message   = new YiiMailMessage;

@@ -19,7 +19,7 @@
     <div>
             Date : <?php echo $date; //Additional Messages will be displayed here.?> </div></div>
     <div>
-            Amount : PLN <?php echo $amount; //Additional Messages will be displayed here.?> </div></div>
+            Amount : PLN <?php echo $amount; ?> </div></div>
     <div>
             &nbsp;</div>
     <div>
