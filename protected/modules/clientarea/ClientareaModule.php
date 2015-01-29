@@ -13,19 +13,18 @@ class ClientareaModule extends CWebModule
 		// import the module-level models and components
 		$this->setImport(array(
 			'application.components.*',
-			'application.models.*',
-			'application.helpers.*',
+			//'application.models.*', // Commented By Roopan - Its already inlcuded
+			//'application.helpers.*', // Commented By Roopan - Its already inlcuded
 			'clientarea.models.*',
 			'clientarea.components.*',
 		));
 		
-                //Commented By Roopan
-                
-		/*$this->setComponents(array(
+             
+		$this->setComponents(array(
 			'errorHandler' => array(
 				'errorAction' => 'clientarea/dashboard/error'
 			),
-		));*/
+		));
 	}
 
 	public function beforeControllerAction($controller, $action)
@@ -43,4 +42,5 @@ class ClientareaModule extends CWebModule
 		else
 			return false;
 	}
+ 
 }
