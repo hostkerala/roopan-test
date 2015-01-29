@@ -576,7 +576,6 @@ class ItemController extends ClientareaController {
         foreach($history as $email)
         {  
             $message   = new YiiMailMessage;
-            $params['body'] = $email->body;
             $message->subject    = "Reminder: ".$email->subject;   
             $message->message->setBody($email->body, 'text/html'); // Used to attach HTML message to the body.
 
@@ -745,3 +744,4 @@ class ItemController extends ClientareaController {
         return  $message;
     }
 }
+
