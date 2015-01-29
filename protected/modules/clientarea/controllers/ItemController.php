@@ -488,48 +488,50 @@ class ItemController extends ClientareaController {
      * Functin to Send Email, Save Email in EmailHistory
      */
     
-    public function actionSendEmail()
+    public function actionSendEmail($categoryType = Category::TYPE_DEFAULT)
     {  
+        $params = array();
+        $folder_name ="";
         $model = new SendMailForm;
         $model->from = "roopztest@gmail.com"; //Hard coded the From Address for testing purpose.
         $model->subject = "Item from Zara"; //Hard coded the From Address for testing purpose.
-        $categoryType = Category::TYPE_DEFAULT;
+        
         $categories_tree = Category::model()->findAllByAttributes(
             array('category_type' => $categoryType),
             array('order' => Category::ATTR_LEFT . ' ASC')
-        );
+        );  
 
         if(isset($_POST['ids']))
         {
             if(!empty($_POST['ids']))
             {
-                $selected__items = $_POST['ids'];
-                $selected_items_string = "";
-                foreach($selected__items as $items)
+                foreach($_POST['ids'] as $items)
                 {
-                      $selected_items_string .=   ",".$items;                
+                      $model->selected_items .=   ",".$items;                
                 }
             }
         }
         
-        $params = array();
-        $params['date'] = date('d M Y');
-        $params['amount'] = Item::model()->findSumSelected($selected__items);
-        $model->selected_items = $selected_items_string;
-        $model->body  = $this->renderPartial('_mail_template',array('amount'=>$params['amount'],'date'=>$params['date']),true);
- 
+        $params =   array(
+                        'date' => date('d M Y'),
+                        'amount'=> Item::model()->findSumSelected($model->selected_items)
+                    );
+
+        $model->body  = $this->renderPartial('_mail_template',array('params'=>$params),true);
+        
         if (isset($_POST['SendMailForm'])) 
 		{
-			$model->attributes = $_POST['SendMailForm'];                       
-                        $selected__items =  explode( ',', $model->selected_items ); // Used to Keep the track of selected items      
-                        $params['amount'] = Item::model()->findSumSelected($selected__items); 
+			$model->attributes = $_POST['SendMailForm'];
                         if($model->validate())
 			{                              
                             $message   = new YiiMailMessage;
-                            $params['body'] = $model->body;                            
+                            $params =   array(
+                                'date' => date('d M Y'),
+                                'amount'=> Item::model()->findSumSelected($model->selected_items),                                
+                            );
+                          
                             $message = $this->messageSetToCC($model->to,$model->cc,$message);                             
-                            $attached_files = CUploadedFile::getInstancesByName('attached_files');    
-                            $folder_name ="";
+                            $attached_files = CUploadedFile::getInstancesByName('attached_files');                                
                             if(!empty($attached_files))
                             {
                                 $folder_name = $this->generateRandomString();
@@ -537,16 +539,14 @@ class ItemController extends ClientareaController {
                                 $message = $this->attachFiles($attached_files,$message);
                             }
                             
-                            //This points to the file sendMail.php inside the view path
-                            $message->view = "_mail_template";
                             $message->subject    = $model->subject;                            
-                            $message->message->setBody($this->renderPartial('_mail_template',array('amount'=>$params['amount'],'date'=>$params['date']),true), 'text/html'); // Used to attach HTML message to the body.
+                            $message->message->setBody($this->renderPartial('_mail_template',array('params'=>$params),true), 'text/html'); // Used to attach HTML message to the body.
                             $message->from = $model->from;                            
                             
                             //Attach Items PDF only if option selected in the view
                             if($model->attach_pdf==1)
                             {
-                                $content_PDF = $this->generatePdf($selected__items);
+                                $content_PDF = $this->generatePdf($model->selected_items);
                                 $swiftAttachment = Swift_Attachment::newInstance($content_PDF, 'list.pdf', 'application/pdf');
                                 $message->attach($swiftAttachment);
                             }   
@@ -557,7 +557,7 @@ class ItemController extends ClientareaController {
                             }     
                             $this->redirect('index');
 			}
-		}         
+		}        
         $this->render('sendmail', array('model' => $model, 'categories_tree' => $categories_tree,'selected_items'=>$selected__items));
     }
     
@@ -574,12 +574,9 @@ class ItemController extends ClientareaController {
         $history = EmailHistory::model()->findAll();
         
         foreach($history as $email)
-        {            
-            $selected__items =  explode( ',', $email->item_ids );
+        {  
             $message   = new YiiMailMessage;
             $params['body'] = $email->body;
-            //This points to the file sendMail.php inside the view path
-            $message->view = "_mail_template";
             $message->subject    = "Reminder: ".$email->subject;   
             $message->message->setBody($email->body, 'text/html'); // Used to attach HTML message to the body.
 
@@ -590,7 +587,7 @@ class ItemController extends ClientareaController {
             //Attach Items PDF only if option selected in the view
             if($email->attach_pdf==1)
             {
-                $content_PDF = $this->generatePdf($selected__items);
+                $content_PDF = $this->generatePdf($email->item_ids);
                 $swiftAttachment = Swift_Attachment::newInstance($content_PDF, 'list.pdf', 'application/pdf');
                 $message->attach($swiftAttachment);
             } 
@@ -623,8 +620,9 @@ class ItemController extends ClientareaController {
      * Function to Generate PDF from View file.
      */
     
-    public function generatePdf($selected_items)
+    public function generatePdf($selected_ids)
     {
+        $selected__items =  explode( ',', $email->item_ids );
         $html2pdf = Yii::app()->ePdf->HTML2PDF();
         $mailContent = $this->renderPartial('_item_pdf',array('selected_items'=>$selected_items),true);
         $html2pdf->WriteHTML($mailContent);

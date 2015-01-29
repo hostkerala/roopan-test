@@ -297,8 +297,8 @@ class Item extends CActiveRecord
     {
         $criteria = new CDbCriteria;
         //Can be Commented... By Roopan - for Testing Purpose - Test Assignment
-        $criteria->with = array('client' => array('select' => false));
-        $criteria->compare('client.client_user_id', Yii::app()->user->id);
+        //$criteria->with = array('client' => array('select' => false));
+        //$criteria->compare('client.client_user_id', Yii::app()->user->id);
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.item_category_id', $this->item_category_id);
         $criteria->compare('t.item_name', $this->item_name,true);
@@ -438,10 +438,11 @@ class Item extends CActiveRecord
         * Function get the selected items list
         */    
 
-       public function getSelectedItems($selected_items)
+       public function getSelectedItems($selected_items_string)
        {
+           $selected__items_array =  explode( ',', $selected_items_string);
            $criteria = new CDbCriteria;
-           $criteria->addInCondition('t.id', $selected_items);  
+           $criteria->addInCondition('t.id', $selected__items_array);  
            return new CActiveDataProvider($this, array(
                'criteria' => $criteria,
            ));
@@ -454,12 +455,14 @@ class Item extends CActiveRecord
         * Function get the sum of amount of selected items
         */    
 
-       public function findSumSelected($selected_items)
+       public function findSumSelected($selected_items_string)
        {
+            
+            $selected__items_array =  explode( ',', $selected_items_string);
             $command=Yii::app()->db->createCommand();
             $command->select('SUM(item_amount) AS sum_amount');
             $command->from('item');
-            $command->where(array('in', 'id', $selected_items));
+            $command->where(array('in', 'id', $selected__items_array));
             $sum = $command->queryScalar();
             if($sum)
             {

@@ -9,7 +9,7 @@
 
 <div class="col-lg-12">
     <?php $this->renderPartial('_mail_preview', array(
-        'selected_items'=>$selected_items,
+        'selected_items'=>$model->selected_items,
     ));?>
 </div>
 

@@ -17,13 +17,9 @@
     <div>
             Overview</div>
     <div>
-            Date : <?php echo $date; //Additional Messages will be displayed here.?> </div></div>
+            Date : <?php echo $params['date']; //Additional Messages will be displayed here.?> </div></div>
     <div>
-            Amount : PLN <?php echo $amount; ?> </div></div>
-    <div>
-            &nbsp;</div>
-    <div>
-            <?php echo $body; //Additional Messages will be displayed here.?> </div>
+            Amount : PLN <?php echo $params['amount']; ?> </div></div>
     <div>
             &nbsp;</div>
     <div>
