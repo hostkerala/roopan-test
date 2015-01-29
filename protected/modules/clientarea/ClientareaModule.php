@@ -12,7 +12,7 @@ class ClientareaModule extends CWebModule
 
 		// import the module-level models and components
 		$this->setImport(array(
-			'application.components.*',
+			//'application.components.*', // Commented By Roopan - Its already inlcuded
 			//'application.models.*', // Commented By Roopan - Its already inlcuded
 			//'application.helpers.*', // Commented By Roopan - Its already inlcuded
 			'clientarea.models.*',
