@@ -18,6 +18,8 @@ class ClientareaModule extends CWebModule
 			'clientarea.models.*',
 			'clientarea.components.*',
 		));
+                
+                Yii::app()->theme = 'clientarea';
 		
              
 		$this->setComponents(array(
@@ -27,20 +29,23 @@ class ClientareaModule extends CWebModule
 		));
 	}
 
-	public function beforeControllerAction($controller, $action)
-	{
-		if(parent::beforeControllerAction($controller, $action))
+	//Commented By Roopan
+	/*	public function beforeControllerAction($controller, $action)
 		{
-			// this method is called before any module controller action is performed
-			// you may place customized code here
+			if(parent::beforeControllerAction($controller, $action))
+			{
+				// this method is called before any module controller action is performed
+				// you may place customized code here
 			
-			// all module has separate styling
-			Yii::app()->theme = 'clientarea';
+				// all module has separate styling
+				Yii::app()->theme = 'clientarea';
 			
-			return true;
+				return true;
+			}
+			else
+				return false;
 		}
-		else
-			return false;
-	}
+
+	*/
  
 }
