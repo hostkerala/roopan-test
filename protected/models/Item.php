@@ -471,4 +471,3 @@ class Item extends CActiveRecord
             return 0;
        }
 }
-

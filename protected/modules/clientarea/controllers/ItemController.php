@@ -540,7 +540,7 @@ class ItemController extends ClientareaController {
                             }
                             
                             $message->subject    = $model->subject;                            
-                            $message->message->setBody($this->renderPartial('_mail_template',array('params'=>$params),true), 'text/html'); // Used to attach HTML message to the body.
+                            $message->message->setBody($model->body, 'text/html'); // Used to attach HTML message to the body.
                             $message->from = $model->from;                            
                             
                             //Attach Items PDF only if option selected in the view
@@ -558,7 +558,7 @@ class ItemController extends ClientareaController {
                             $this->redirect('index');
 			}
 		}        
-        $this->render('sendmail', array('model' => $model, 'categories_tree' => $categories_tree,'selected_items'=>$selected__items));
+        $this->render('sendmail', array('model' => $model, 'categories_tree' => $categories_tree));
     }
     
     
@@ -744,4 +744,3 @@ class ItemController extends ClientareaController {
         return  $message;
     }
 }
-

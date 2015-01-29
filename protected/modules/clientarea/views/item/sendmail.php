@@ -31,7 +31,6 @@ $form = $this->beginWidget('application.modules.clientarea.widgets.ClientActiveF
     <?php $this->renderPartial('_send_email', array(
         'form' => $form,
         'model' => $model,
-        'selected_items'=>$selected_items,
     )); ?>
     <?php $this->endWidget(); ?>
 </div>
