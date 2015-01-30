@@ -15,7 +15,7 @@ class ClientareaModule extends CWebModule
 			//'application.components.*', // Commented By Roopan - Its already inlcuded
 			//'application.models.*', // Commented By Roopan - Its already inlcuded
 			//'application.helpers.*', // Commented By Roopan - Its already inlcuded
-			'clientarea.models.*',
+			//'clientarea.models.*',
 			'clientarea.components.*',
 		));
                 
