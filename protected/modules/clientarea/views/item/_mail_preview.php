@@ -38,11 +38,4 @@
                 ),
         ),
 ));?>
-
-        <div class="buttons">
-        <?php echo Html::link('Back to list', 
-                        array( ItemController::LIST_ACTION_ROUTE ), 
-                        array('data-target' => '#item-content', 'class' => 'btn btn-default')
-                ); ?>
-        </div>
 </div>
