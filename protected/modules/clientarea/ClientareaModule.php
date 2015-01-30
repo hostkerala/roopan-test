@@ -18,9 +18,6 @@ class ClientareaModule extends CWebModule
 			//'clientarea.models.*',
 			'clientarea.components.*',
 		));
-                
-                Yii::app()->theme = 'clientarea';
-		
              
 		$this->setComponents(array(
 			'errorHandler' => array(
@@ -29,8 +26,7 @@ class ClientareaModule extends CWebModule
 		));
 	}
 
-//Commented By Roopan
-/*	public function beforeControllerAction($controller, $action)
+	public function beforeControllerAction($controller, $action)
 	{
 		if(parent::beforeControllerAction($controller, $action))
 		{
@@ -46,6 +42,6 @@ class ClientareaModule extends CWebModule
 			return false;
 	}
 
-*/
+
  
 }

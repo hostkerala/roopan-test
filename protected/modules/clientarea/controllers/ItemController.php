@@ -1,7 +1,7 @@
 <?php
 
 class ItemController extends ClientareaController {
-
+    
     const LIST_ACTION_ROUTE = '/clientarea/item/list';
 
     public function filters() {
