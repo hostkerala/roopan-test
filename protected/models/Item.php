@@ -297,8 +297,8 @@ class Item extends CActiveRecord
     {
         $criteria = new CDbCriteria;
         //Can be Commented... By Roopan - for Testing Purpose - Test Assignment
-        $criteria->with = array('client' => array('select' => false));
-        $criteria->compare('client.client_user_id', Yii::app()->user->id);
+        //$criteria->with = array('client' => array('select' => false));
+        //$criteria->compare('client.client_user_id', Yii::app()->user->id);
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.item_category_id', $this->item_category_id);
         $criteria->compare('t.item_name', $this->item_name,true);
