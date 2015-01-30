@@ -60,10 +60,10 @@ class SendMailForm extends CFormModel
         
         public function validateEmail($attribute,$params)
         {
-            $emailArray =  explode( ',', $this->$attribute);
-            foreach($emailArray as $email)
+            if($this->$attribute)
             {
-                if($email) //Validating CC , Checks only sets Because CC is optional
+                $emailArray =  explode( ',', $this->$attribute);    
+                foreach($emailArray as $email)
                 {
                     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
                     {
