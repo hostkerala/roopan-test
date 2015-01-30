@@ -140,6 +140,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'office@nego-solutions.com',
-                'uploadDir'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'../../uploads'            
+                'uploadDir'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'uploads'            
 	),
 );

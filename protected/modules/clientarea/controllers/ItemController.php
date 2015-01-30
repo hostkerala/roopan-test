@@ -592,12 +592,12 @@ class ItemController extends ClientareaController {
             } 
            if($email->attach_files)
            {
-                if ($handle = opendir(yii::app()->params['uploadDir']."/".$email->attach_files)) {
+                if ($handle = opendir(yii::app()->params['uploadDir'].DIRECTORY_SEPARATOR.$email->attach_files)) {
 
                      while (false !== ($entry = readdir($handle))) {
 
                          if ($entry != "." && $entry != "..") {
-                            $message->attach(Swift_Attachment::fromPath(yii::app()->params['uploadDir']."/".$email->attach_files."/".$entry)->setFilename($entry));
+                            $message->attach(Swift_Attachment::fromPath(yii::app()->params['uploadDir'].DIRECTORY_SEPARATOR.$email->attach_files.DIRECTORY_SEPARATOR.$entry)->setFilename($entry));
                          }
                      }
                  closedir($handle);
@@ -679,19 +679,18 @@ class ItemController extends ClientareaController {
         {                               
             foreach ($attached_files as $attached_files => $file)
             {                                   
-                if(!is_dir(Yii::getPathOfAlias('webroot').'/uploads/'.$folder_name)) 
+                if(!is_dir(yii::app()->params['uploadDir'].DIRECTORY_SEPARATOR.$folder_name)) 
                 {                     
-                     $oldmask = umask(0);
-                     mkdir(Yii::getPathOfAlias('webroot').'/uploads/'.$folder_name,0777);                                     
-                     if (!$file->saveAs(Yii::getPathOfAlias('webroot').'/uploads/'.$folder_name.'/'.$file->name)) {
-                         return false;
-                     }
-                     umask($oldmask);
+                    mkdir(yii::app()->params['uploadDir'].DIRECTORY_SEPARATOR.$folder_name,0777);                                     
+                }    
+                    
+                if (!$file->saveAs(yii::app()->params['uploadDir'].DIRECTORY_SEPARATOR.$folder_name.DIRECTORY_SEPARATOR.$file->name)) 
+                {
+                    return false;
                 }
             }
-            return;
-         }
-        
+        }
+        return;
     }
     
      /**
