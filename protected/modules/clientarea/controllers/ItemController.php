@@ -621,7 +621,7 @@ class ItemController extends ClientareaController {
     {
         $selected__items =  explode( ',', $email->item_ids );
         $html2pdf = Yii::app()->ePdf->HTML2PDF();
-        $mailContent = $this->renderPartial('_item_pdf',array('selected_items'=>$selected_items),true);
+        $mailContent = $this->renderPartial('_mail_preview',array('selected_items'=>$selected_items),true);
         $html2pdf->WriteHTML($mailContent);
         $content_PDF = $html2pdf->Output('', EYiiPdf::OUTPUT_TO_STRING);
         return $content_PDF;
