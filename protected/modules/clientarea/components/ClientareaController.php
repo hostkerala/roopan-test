@@ -2,7 +2,13 @@
 
 class ClientareaController extends Controller
 {	
-	public $layout = '//layouts/main';
+	public $layout = 'webroot.themes.clientarea.views.layouts.main'; // Added by Roopan to apply theme
+    
+        public function init()
+        {
+            yii::app()->theme = 'clientarea'; // Added by Roopan to apply theme
+            return parent::init();
+        }  
 	
 	public function filters()
 	{

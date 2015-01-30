@@ -3,15 +3,6 @@
 class ClientController extends ClientareaController
 {
         
-        public $layout = 'webroot.themes.clientarea.views.layouts.main';	
-    
-       
-        public function init()
-        {
-            yii::app()->theme = 'clientarea';
-            return parent::init();
-        }  
-        
         public function filters()
 	{
 		$filters = parent::filters();
