@@ -620,9 +620,10 @@ class ItemController extends ClientareaController {
     public function generatePdf($selected_ids)
     {
         $selected__items =  explode( ',', $email->item_ids );
-        $html2pdf = Yii::app()->ePdf->HTML2PDF();
-        $mailContent = $this->renderPartial('_mail_preview',array('selected_items'=>$selected_items),true);
-        $html2pdf->WriteHTML($mailContent);
+        $html2pdf = Yii::app()->ePdf->HTML2PDF();               
+        $mailContent = $this->renderPartial('_mail_preview',array('selected_items'=>$selected_items),true);        
+        $css = '<style>'.file_get_contents(Yii::app()->request->getBaseUrl(true).'/themes/clientarea/assets/css/style_pdf.css').'</style>';
+        $html2pdf->WriteHTML($css.$mailContent);
         $content_PDF = $html2pdf->Output('', EYiiPdf::OUTPUT_TO_STRING);
         return $content_PDF;
         
