@@ -108,7 +108,7 @@
             <div class="form-group">
                 <div class="buttons">
                     <?php   echo $form->hiddenField($model,'selected_items');  ?>
-                    <?php   echo CHtml::submitButton('Submit', array('class' => 'btn btn-primary')); ?>            
+                    <?php   echo CHtml::submitButton('Send', array('class' => 'btn btn-primary')); ?>            
                     <?php   echo Html::link('Cancel', 
                                         array( ItemController::LIST_ACTION_ROUTE ), 
                                         array('data-target' => '#item-content', 'class' => 'btn btn-default')
