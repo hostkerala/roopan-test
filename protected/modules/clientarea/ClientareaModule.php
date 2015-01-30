@@ -3,8 +3,7 @@
 class ClientareaModule extends CWebModule
 {
 	public $defaultController = 'dashboard';
-	public $layout = '//layouts/main';
-	
+
 	public function init()
 	{
 		// this method is called when the module is being created
@@ -26,7 +25,7 @@ class ClientareaModule extends CWebModule
 		));
 	}
 
-	public function beforeControllerAction($controller, $action)
+/*        public function beforeControllerAction($controller, $action)
 	{
 		if(parent::beforeControllerAction($controller, $action))
 		{
@@ -40,8 +39,7 @@ class ClientareaModule extends CWebModule
 		}
 		else
 			return false;
-	}
-
-
+	} 
  
+ */
 }

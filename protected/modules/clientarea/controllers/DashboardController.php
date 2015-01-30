@@ -2,7 +2,16 @@
 
 class DashboardController extends ClientareaController
 {
-	public function actionIndex()
+   
+        public $layout = 'webroot.themes.clientarea.views.layouts.main';
+    
+        public function init()
+        {
+            yii::app()->theme = 'clientarea';
+            return parent::init();
+        }  
+        
+        public function actionIndex()
 	{
 		$this->render('index');
 	}

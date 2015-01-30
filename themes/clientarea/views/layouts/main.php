@@ -43,7 +43,9 @@
 		<div class="container">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
-					<?php $this->renderPartial('//layouts/_header', array('user' => $user)); ?>
+					<?php 
+                                        Yii::app()->controller->renderFile(Yii::app()->basePath.'/../themes/clientarea/views/layouts/_header.php',array('user' => $user));
+                                        //$this->renderPartial('//layouts/_header', array('user' => $user)); ?>
 				</div>
 			</div>
 			<div class="row clearfix">

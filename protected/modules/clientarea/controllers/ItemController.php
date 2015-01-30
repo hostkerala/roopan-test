@@ -3,6 +3,7 @@
 class ItemController extends ClientareaController {
     
     const LIST_ACTION_ROUTE = '/clientarea/item/list';
+    public $layout = 'webroot.themes.clientarea.views.layouts.main';
 
     public function filters() {
         $filters = parent::filters();
@@ -11,7 +12,12 @@ class ItemController extends ClientareaController {
 
         return $filters;
     }
-
+    
+    public function init()
+    {
+        yii::app()->theme = 'clientarea';
+        return parent::init();
+    }            
 
     /**
      * load UI for item section (left menu and action buttons)
