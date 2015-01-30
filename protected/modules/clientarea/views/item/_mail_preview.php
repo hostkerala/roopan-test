@@ -1,5 +1,5 @@
 <section class="round-border">
-        <div>
+        <div class="buttons">
                 <button href="#collapse1" class="nav-toggle btn btn-primary">Show Preview</button>
         </div>
         <div id="collapse1" style="display:none">
@@ -78,8 +78,6 @@
 </script>
 <style>	
 .round-border {
-        border: 1px solid #eee;
-        border: 1px solid rgba(0, 0, 0, 0.05);
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         border-radius: 4px;

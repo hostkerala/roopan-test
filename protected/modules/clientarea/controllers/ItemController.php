@@ -524,6 +524,7 @@ class ItemController extends ClientareaController {
 			$model->attributes = $_POST['SendMailForm'];
                         if($model->validate())
 			{                              
+                            
                             $message   = new YiiMailMessage;
                             $params =   array(
                                 'date' => date('d M Y'),
@@ -648,6 +649,7 @@ class ItemController extends ClientareaController {
      * Time :12:00 AM
      * Function to Set to/cc addresses
      */
+    
     public function messageSetToCC($to,$from,$message)
     {
         $toArray =  explode( ',', $to);
@@ -657,11 +659,14 @@ class ItemController extends ClientareaController {
         {
             $message->addTo($to);                                
         }
-
-        foreach($ccArray as $cc)
+        
+        if($cc)
         {
-            $message->addCc($cc);                                
-        }   
+            foreach($ccArray as $cc)
+            {
+                $message->addCc($cc);                                
+            } 
+        }
         return $message;
     }
     

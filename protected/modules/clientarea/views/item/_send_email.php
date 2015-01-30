@@ -1,35 +1,29 @@
-<div class="row">
-    <div class="col-lg-12">
-        <div class="form-group">
-            <div class="col-lg-12">
-                <?php echo $form->labelEx($model,'from'); ?>
-                <?php echo $form->textField($model,'from',array('readOnly'=>'readOnly','size'=>'50')); ?>
+
+<div class="form-wrap form-horizontal">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <?php echo $form->labelEx($model,'from', array('class' => 'control-label')); ?>
+                <?php echo $form->textField($model,'from',array('readOnly'=>'readOnly')); ?>
                 <?php echo $form->error($model,'from'); ?>
             </div>
-        </div>
-        <div class="form-group">
-             <div class="col-lg-12">
-                <?php echo $form->labelEx($model,'to'); ?>
-                <?php echo $form->textField($model,'to',array('size'=>'50','placeholder'=>"Comma seperated To address",'type'=>'text')); ?>                             
-                <?php echo $form->error($model,'to'); ?>
-             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-12">
-                <?php echo $form->labelEx($model,'cc'); ?>
-                <?php echo $form->textField($model,'cc',array('size'=>'50','placeholder'=>"Comma seperated CC address",'type'=>'text')); ?>         
-                <?php echo $form->error($model,'cc'); ?>
+            <div class="form-group">
+                    <?php echo $form->labelEx($model,'to', array('class' => 'control-label')); ?>
+                    <?php echo $form->textField($model,'to',array('placeholder'=>"Comma seperated To address",'type'=>'text')); ?>                             
+                    <?php echo $form->error($model,'to'); ?>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-12">
-                <?php echo $form->labelEx($model,'subject'); ?>
-                <?php echo $form->textField($model,'subject',array('size'=>50,'maxlength'=>128,'readOnly'=>'readOnly')); ?>
-                <?php echo $form->error($model,'subject'); ?>
+            <div class="form-group">
+                    <?php echo $form->labelEx($model,'cc', array('class' => 'control-label')); ?>
+                    <?php echo $form->textField($model,'cc',array('placeholder'=>"Comma seperated CC address",'type'=>'text')); ?>         
+                    <?php echo $form->error($model,'cc'); ?>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-12">
+            <div class="form-group">
+                    <?php echo $form->labelEx($model,'subject', array('class' => 'control-label')); ?>
+                    <?php echo $form->textField($model,'subject',array('maxlength'=>128,'readOnly'=>'readOnly')); ?>
+                    <?php echo $form->error($model,'subject'); ?>
+            </div>
+            <hr />
+            <div class="form-group">
                 <?php 
                 $editMe = $this->widget('ext.editMe.widgets.ExtEditMe', array(
                     'name'  =>'SendMailForm[body]',
@@ -79,39 +73,25 @@
                 ?>
                 <?php echo $form->error($model,'body'); ?>     
             </div>
-        </div>
-        <hr />
-        <div class="form-group">
-            <div class="col-lg-12">
+            <div class="form-group">
                 <div class="col-md-6">
                     <?php echo $form->labelEx($model,'attach_customer_statement'); ?>                    
                 </div>
                 <div class="col-md-6">
                     <?php echo $form->checkBox($model,'attach_customer_statement',array('style'=>'margin-top:50px;')); ?>                    
                 </div>      
-                <div class="col-lg-12">
-                    <?php echo $form->error($model,'attach_customer_statement'); ?>                
-                </div>                   
+                    <?php echo $form->error($model,'attach_customer_statement'); ?>  
             </div>
-        </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-12">
-                <hr />
+            <div class="form-group">
                 <div class="col-md-6">
                     <?php echo $form->labelEx($model,'attach_pdf'); ?>                
                 </div>
                 <div class="col-md-6">
                     <?php echo $form->checkBox($model,'attach_pdf'); ?>         
                 </div>      
-                <div class="col-lg-12">
                     <?php echo $form->error($model,'attach_pdf'); ?>                
-                </div>                   
-            </div>
-        </div>        
-        <div class="form-group">
-            <div class="col-lg-12">
-                <hr />
+                </div> 
+            <div class="form-group">
                 <div class="col-md-4">
                     <?php echo $form->labelEx($model,'attach_files'); ?>                    
                 </div>
@@ -123,25 +103,19 @@
                         'denied' => 'Invalid file type', 
                     )); ?>                    
                 </div>      
-                <div class="col-lg-12">
-                    <?php echo $form->error($model,'attach_files'); ?>                
-                </div>                   
+                <?php echo $form->error($model,'attach_files'); ?>                
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-12">    
-                <hr />  
-                <?php echo $form->hiddenField($model,'selected_items');  ?>
-                <?php echo CHtml::submitButton('Submit', array('class' => 'btn btn-primary')); ?>            
-                <?php echo CHtml::link('Cancel', $this->createAbsoluteUrl('/clientarea/item/index'),array('class'=>'btn btn-danger', 'id'=>'cancel_btn')); ?>
+            <div class="form-group">
+                <div class="buttons">
+                    <?php   echo $form->hiddenField($model,'selected_items');  ?>
+                    <?php   echo CHtml::submitButton('Submit', array('class' => 'btn btn-primary')); ?>            
+                    <?php   echo Html::link('Cancel', 
+                                        array( ItemController::LIST_ACTION_ROUTE ), 
+                                        array('data-target' => '#item-content', 'class' => 'btn btn-default')
+                                ); 
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    #cancel_btn
-    {
-        font-size: 24px;       
-    }
-</style>
