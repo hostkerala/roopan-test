@@ -621,9 +621,13 @@ class ItemController extends ClientareaController {
     {
         $html2pdf = Yii::app()->ePdf->HTML2PDF();               
         $mailContent = $this->renderPartial('_mail_preview',array('selected_items'=>$selected_ids),true);        
+        //Deleting Extra appended content from pdf/grid
+        $mailContent = (substr($mailContent, 0, strpos($mailContent, '<div class="keys"')));
+        $mailContent .= "</div>";
+        //Adding Css
         $css = '<style>'.file_get_contents(Yii::app()->request->getBaseUrl(true).'/themes/clientarea/assets/css/style_pdf.css').'</style>';
-        $html2pdf->WriteHTML($css.$mailContent);
-        $content_PDF = $html2pdf->Output('', EYiiPdf::OUTPUT_TO_STRING);
+        $html2pdf->WriteHTML($mailContent);        
+        $content_PDF = $html2pdf->Output('', EYiiPdf::OUTPUT_TO_STRING);        
         return $content_PDF;
         
     }

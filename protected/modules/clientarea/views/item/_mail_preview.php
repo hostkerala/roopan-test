@@ -1,4 +1,3 @@
-<div class="list-view">
 <h3>SUMMARY OF ITEMS </h3>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
         'dataProvider' => Item::model()->getSelectedItems($selected_items),
@@ -38,4 +37,3 @@
                 ),
         ),
 ));?>
-</div>
