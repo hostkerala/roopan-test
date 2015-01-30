@@ -551,8 +551,11 @@ class ItemController extends ClientareaController {
                             if(Yii::app()->mail->send($message)) 
                             {
                                 $this->saveHistory($folder_name,$model);                                                         
-                            }     
-                            $this->redirect('index');
+                            }
+                            echo $this->renderPartial('_mail_preview', array(
+                                                    'selected_items'=>$model->selected_items,
+                                                    true
+                                                    ));                            
                             yii::app()->end();
 			}
 		}        
