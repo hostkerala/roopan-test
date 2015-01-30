@@ -445,6 +445,7 @@ class Item extends CActiveRecord
            $criteria->addInCondition('t.id', $selected__items_array);  
            return new CActiveDataProvider($this, array(
                'criteria' => $criteria,
+               'pagination'=>false
            ));
        }   
 
