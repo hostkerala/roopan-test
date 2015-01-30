@@ -1,5 +1,5 @@
 <div class="list-view">
- <hr />
+    <h3> Following Items sent successfully. </h3>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
         'dataProvider' => Item::model()->getSelectedItems($selected_items),
         'itemsCssClass' => 'table table-hover table-bordered',
