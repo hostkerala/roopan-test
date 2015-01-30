@@ -626,7 +626,7 @@ class ItemController extends ClientareaController {
         $mailContent .= "</div>";
         //Adding Css
         $css = '<style>'.file_get_contents(Yii::app()->request->getBaseUrl(true).'/themes/clientarea/assets/css/style_pdf.css').'</style>';
-        $html2pdf->WriteHTML($mailContent);        
+        $html2pdf->WriteHTML($css.$mailContent);        
         $content_PDF = $html2pdf->Output('', EYiiPdf::OUTPUT_TO_STRING);        
         return $content_PDF;
         
