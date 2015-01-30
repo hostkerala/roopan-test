@@ -47,6 +47,7 @@ class SendMailForm extends CFormModel
                         'attach_customer_statement'=>'Attach Customer Statement',
                         'attach_pdf'=>'Attach PDF',
                         'attach_files'=>'Attach Files',
+                        'body'=>'&nbsp;'
 		);
 	}
         

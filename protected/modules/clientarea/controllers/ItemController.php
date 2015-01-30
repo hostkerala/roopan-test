@@ -493,22 +493,19 @@ class ItemController extends ClientareaController {
         $params = array();
         $folder_name ="";
         $model = new SendMailForm;
-        $model->from = "roopztest@gmail.com"; //Hard coded the From Address for testing purpose.
-        $model->subject = "Item from Zara"; //Hard coded the From Address for testing purpose.
+        $model->from = "roopztest@gmail.com"; //Hard coded the -From- Address for testing purpose.
+        $model->subject = "Item from Zara"; //Hard coded the Subject.
         
         $categories_tree = Category::model()->findAllByAttributes(
             array('category_type' => $categoryType),
             array('order' => Category::ATTR_LEFT . ' ASC')
         );  
 
-        if(isset($_POST['ids']))
+        if(isset($_POST['ids']) && !empty($_POST['ids']))
         {
-            if(!empty($_POST['ids']))
+            foreach($_POST['ids'] as $items)
             {
-                foreach($_POST['ids'] as $items)
-                {
-                      $model->selected_items .=   ",".$items;                
-                }
+                  $model->selected_items .=   ",".$items;                
             }
         }
         
@@ -523,26 +520,25 @@ class ItemController extends ClientareaController {
 		{
 			$model->attributes = $_POST['SendMailForm'];
                         if($model->validate())
-			{                              
-                            
+			{ 
                             $message   = new YiiMailMessage;
                             $params =   array(
                                 'date' => date('d M Y'),
                                 'amount'=> Item::model()->findSumSelected($model->selected_items),                                
                             );
                           
-                            $message = $this->messageSetToCC($model->to,$model->cc,$message);                             
-                            $attached_files = CUploadedFile::getInstancesByName('attached_files');                                
+                            $message = $this->messageSetToCC($model->to,$model->cc,$message);      //Adding to/cc with the mail                       
+                            $message->subject    = $model->subject;                            
+                            $message->message->setBody($model->body, 'text/html'); // Used to attach HTML message to the body.
+                            $message->from = $model->from;  
+                            $attached_files = CUploadedFile::getInstancesByName('attached_files'); 
+                            
                             if(!empty($attached_files))
                             {
                                 $folder_name = $this->generateRandomString();
-                                $this->uploadFiles($attached_files,$folder_name,$message);
-                                $message = $this->attachFiles($attached_files,$message);
+                                $this->uploadFiles($attached_files,$folder_name,$message);  //Upload files to the upload directory defined in main.php
+                                $message = $this->attachFiles($attached_files,$message);    //Attach the the uploaded files with the mail
                             }
-                            
-                            $message->subject    = $model->subject;                            
-                            $message->message->setBody($model->body, 'text/html'); // Used to attach HTML message to the body.
-                            $message->from = $model->from;                            
                             
                             //Attach Items PDF only if option selected in the view
                             if($model->attach_pdf==1)
@@ -557,6 +553,7 @@ class ItemController extends ClientareaController {
                                 $this->saveHistory($folder_name,$model);                                                         
                             }     
                             $this->redirect('index');
+                            yii::app()->end();
 			}
 		}        
         $this->render('sendmail', array('model' => $model, 'categories_tree' => $categories_tree));
@@ -579,11 +576,8 @@ class ItemController extends ClientareaController {
             $message   = new YiiMailMessage;
             $message->subject    = "Reminder: ".$email->subject;   
             $message->message->setBody($email->body, 'text/html'); // Used to attach HTML message to the body.
-
-            $message = $this->messageSetToCC($email->to,$email->cc,$message); 
-            
-            $message->from = $email->from;
-            
+            $message = $this->messageSetToCC($email->to,$email->cc,$message);            
+            $message->from = $email->from;            
             //Attach Items PDF only if option selected in the view
             if($email->attach_pdf==1)
             {
@@ -606,7 +600,7 @@ class ItemController extends ClientareaController {
             }
             if(!Yii::app()->mail->send($message))
             {
-                echo "Email History Id - ".$email->id."-Sending Mail failed...!</br />";            
+                echo "Email History Id - ".$email->id."-Sending Mail failed...!</br />";  //Listing the failed messages ids           
             }
         }
         echo "Sending Reminder Complete..!";

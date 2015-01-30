@@ -4,26 +4,26 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <?php echo $form->labelEx($model,'from', array('class' => 'control-label')); ?>
-                <?php echo $form->textField($model,'from',array('readOnly'=>'readOnly')); ?>
+                <?php echo $form->textField($model,'from',array('readOnly'=>'readOnly','size'=>30)); ?>
                 <?php echo $form->error($model,'from'); ?>
             </div>
             <div class="form-group">
                     <?php echo $form->labelEx($model,'to', array('class' => 'control-label')); ?>
-                    <?php echo $form->textField($model,'to',array('placeholder'=>"Comma seperated To address",'type'=>'text')); ?>                             
+                    <?php echo $form->textField($model,'to',array('placeholder'=>"Comma seperated To address",'type'=>'text','size'=>30)); ?>                             
                     <?php echo $form->error($model,'to'); ?>
             </div>
             <div class="form-group">
                     <?php echo $form->labelEx($model,'cc', array('class' => 'control-label')); ?>
-                    <?php echo $form->textField($model,'cc',array('placeholder'=>"Comma seperated CC address",'type'=>'text')); ?>         
+                    <?php echo $form->textField($model,'cc',array('placeholder'=>"Comma seperated CC address",'type'=>'text','size'=>30)); ?>         
                     <?php echo $form->error($model,'cc'); ?>
             </div>
             <div class="form-group">
                     <?php echo $form->labelEx($model,'subject', array('class' => 'control-label')); ?>
-                    <?php echo $form->textField($model,'subject',array('maxlength'=>128,'readOnly'=>'readOnly')); ?>
+                    <?php echo $form->textField($model,'subject',array('maxlength'=>128,'readOnly'=>'readOnly','size'=>30)); ?>
                     <?php echo $form->error($model,'subject'); ?>
             </div>
-            <hr />
             <div class="form-group">
+                <?php echo $form->labelEx($model,'body', array('class' => 'control-label')); ?>
                 <?php 
                 $editMe = $this->widget('ext.editMe.widgets.ExtEditMe', array(
                     'name'  =>'SendMailForm[body]',

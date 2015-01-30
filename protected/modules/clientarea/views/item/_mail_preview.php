@@ -53,8 +53,6 @@
             </div>
         </div>
 </section>
-
-
 <script>
         $(document).ready(function() {
           $('.nav-toggle').click(function(){
@@ -76,12 +74,4 @@
 
         });	
 </script>
-<style>	
-.round-border {
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        padding: 10px;
-        margin-bottom: 5px;
-}
-</style>
+
