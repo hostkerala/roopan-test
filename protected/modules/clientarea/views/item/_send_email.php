@@ -1,6 +1,5 @@
 <div class="form-wrap form-horizontal">
     <div class="row">
-        <div class="col-lg-12">
             <div class="form-group">
                 <?php echo $form->labelEx($model,'from', array('class' => 'control-label')); ?>
                 <?php echo $form->textField($model,'from',array('readOnly'=>'readOnly','size'=>30)); ?>
@@ -117,4 +116,3 @@
             </div>
         </div>
     </div>
-</div>
