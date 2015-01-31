@@ -1,3 +1,13 @@
+<?php
+/**
+* Created By Roopan v v <yiioverflow@gmail.com>
+* Date : 20-01-2015
+* Time :03:19 AM
+*  @var $this ItemController
+*  @var $selected_items
+*/
+?>
+
 <h3>SUMMARY OF ITEMS </h3>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
         'dataProvider' => Item::model()->getSelectedItems($selected_items),

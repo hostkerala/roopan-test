@@ -1,5 +1,13 @@
 <?php
-/* @var $this ItemController */
+/**
+* Created By Roopan v v <yiioverflow@gmail.com>
+* Date : 20-01-2015
+* Time :03:19 AM
+* Function get the sum of amount of selected items
+* @var $form CactiveForm
+* @var $model CformModel
+* @var $this ItemController
+*/  
 ?>
 
 

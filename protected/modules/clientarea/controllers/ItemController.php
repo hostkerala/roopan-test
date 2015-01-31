@@ -486,6 +486,7 @@ class ItemController extends ClientareaController {
      * Date : 24-01-2015
      * Time :10:00 AM
      * Functin to Send Email, Save Email in EmailHistory
+     * @param Integer $categoryType
      */
     
     public function actionSendEmail($categoryType = Category::TYPE_DEFAULT)
@@ -615,6 +616,8 @@ class ItemController extends ClientareaController {
      * Date : 26-01-2015
      * Time :10:00 AM
      * Function to Generate PDF from View file.
+     * @param $selected_ids String
+     * @return String
      */
     
     public function generatePdf($selected_ids)
@@ -632,6 +635,15 @@ class ItemController extends ClientareaController {
         
     }
     
+    /**
+    * Created By Roopan v v <yiioverflow@gmail.com>
+    * Date : 26-01-2015
+    * Time :10:30 AM
+    * Function to Generate the Randon string for the directory name to upload
+    * @param  Intiger $length
+    * @return String
+    */
+    
     public function generateRandomString($length = 10)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -648,7 +660,10 @@ class ItemController extends ClientareaController {
      * Created By Roopan v v <yiioverflow@gmail.com>
      * Date : 27-01-2015
      * Time :12:00 AM
-     * Function to Set to/cc addresses
+     * Function to Set to/cc addresses to the YiiMailMessage object
+     * @param $to, $cc String
+     * @param $message YiiMailMessage
+     * @return YiiMailMessage
      */
     
     public function messageSetToCC($to,$cc,$message)
@@ -676,6 +691,10 @@ class ItemController extends ClientareaController {
      * Date : 27-01-2015
      * Time :12:00 AM
      * Function to Upload Files
+     * @param $attached_files array
+     * @param $folder_name string
+     * @param $message YiiMailMessage
+     * @return bool
      */
     
     public function uploadFiles($attached_files,$folder_name,$message)
@@ -696,7 +715,7 @@ class ItemController extends ClientareaController {
                 }
             }
         }
-        return;
+        return true;
     }
     
      /**
@@ -704,6 +723,9 @@ class ItemController extends ClientareaController {
      * Date : 27-01-2015
      * Time :12:00 AM
      * Function to Save the message history
+     * @param $folder_name
+     * @param $model EmailHistory
+     * @return bool
      */
     
     public function saveHistory($folder_name,$model)
@@ -734,6 +756,9 @@ class ItemController extends ClientareaController {
      * Date : 27-01-2015
      * Time :01:00 AM
      * Function to Attach Extra files with Mail
+     * @param $attached_files string
+     * @param $message YiiMailMessage
+     * @return YiiMailMessage object
      */
     
     public function attachFiles($attached_files,$message)

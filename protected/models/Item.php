@@ -297,8 +297,8 @@ class Item extends CActiveRecord
     {
         $criteria = new CDbCriteria;
         //Can be Commented... By Roopan - for Testing Purpose - Test Assignment
-        //$criteria->with = array('client' => array('select' => false));
-        //$criteria->compare('client.client_user_id', Yii::app()->user->id);
+        $criteria->with = array('client' => array('select' => false));
+        $criteria->compare('client.client_user_id', Yii::app()->user->id);
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.item_category_id', $this->item_category_id);
         $criteria->compare('t.item_name', $this->item_name,true);
@@ -436,7 +436,10 @@ class Item extends CActiveRecord
         * Date : 20-01-2015
         * Time :11:19 PM
         * Function get the selected items list
-        */    
+        * @param String $selected_items_string
+        * @return CActiveDataProvider object
+        */
+ 
 
        public function getSelectedItems($selected_items_string)
        {
@@ -454,6 +457,8 @@ class Item extends CActiveRecord
         * Date : 20-01-2015
         * Time :03:19 AM
         * Function get the sum of amount of selected items
+        * @param String $selected_items_string
+        * @return integer
         */    
 
        public function findSumSelected($selected_items_string)
